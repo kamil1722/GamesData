@@ -7153,11 +7153,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User_Kamil\\source\\repos\\GamesData\\GamesData\\GamesData.csproj",
+      "projectUniqueName": "C:\\Users\\User_Kamil\\source\\repos\\MyGames\\GamesData\\Visual Studio\\GamesData.csproj",
       "projectName": "GamesData",
-      "projectPath": "C:\\Users\\User_Kamil\\source\\repos\\GamesData\\GamesData\\GamesData.csproj",
+      "projectPath": "C:\\Users\\User_Kamil\\source\\repos\\MyGames\\GamesData\\Visual Studio\\GamesData.csproj",
       "packagesPath": "C:\\Users\\User_Kamil\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User_Kamil\\source\\repos\\GamesData\\GamesData\\obj\\",
+      "outputPath": "C:\\Users\\User_Kamil\\source\\repos\\MyGames\\GamesData\\Visual Studio\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\User_Kamil\\AppData\\Roaming\\NuGet\\NuGet.Config",
