@@ -1,0 +1,34 @@
+﻿@using GamesData
+@{
+    ViewData["Title"] = "Index";
+}
+@{
+    IEnumerable<GamesData.Models.JoinTables> displaydata = ViewData["Results"] as IEnumerable<GamesData.Models.JoinTables>;
+}
+<h1> Games </h1>
+<h3> Games and his genres</h3>
+<hr />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name Game</th>
+                <th>Name Studio</th>
+                <th>Name Genre</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in displaydata)
+            {
+                <tr>
+                    <td>@item.NameGame</td>
+                    <td>@item.NameStudio</td>
+                    <td>@item.NameGenres</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+
+
