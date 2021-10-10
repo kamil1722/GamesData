@@ -1,10 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using GamesData.Models;
-using GamesData;
 
 namespace GamesData.Data
 {
@@ -17,8 +12,7 @@ namespace GamesData.Data
 
         public DbSet<GamesData.Models.GamesTable> GamesTable { get; set; }
 
-        public DbSet<GamesData.Models.GenresTable> GenresTable { get; set; }
-        public DbSet<GamesData.Models.JoinTables> JoinTables { get; set; }
+        public DbSet<GamesData.Models.GenresTable> GenresTable { get; set; }      
 
     }
 }

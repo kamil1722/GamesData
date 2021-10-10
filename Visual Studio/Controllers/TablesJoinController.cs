@@ -22,9 +22,11 @@ namespace GamesData.Controllers
             using (SqlConnection sqlconn = new SqlConnection(connection))
             {
                 using (SqlCommand sqlcomm = new SqlCommand("SELECT GamesTable.NameGame, GamesTable.NameStudio, GenresTable.NameGenres" +
-                    " FROM GamesTable left JOIN GameGenre  " +
-                    " ON GameGenre.IdGame = GamesTable.ID left JOIN GenresTable " +
-                    "ON GameGenre.IdGenre = GenresTable.ID "))
+                    " FROM GamesTable" +
+                    " left JOIN GameGenre" +
+                    " ON GameGenre.IdGame = GamesTable.ID" +
+                    " left JOIN GenresTable" +
+                    " ON GameGenre.IdGenre = GenresTable.ID"))
                 {
                     using (SqlDataAdapter sda = new SqlDataAdapter())
                     {

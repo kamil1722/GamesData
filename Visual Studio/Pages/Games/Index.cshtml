@@ -12,8 +12,11 @@
 </p>
 <form>
     <p>
-         Game: <input type="text" asp-for="SearchGames" />
-         <input type="submit" value="Filter" />           
+        <select asp-for="SelectGenre" asp-items="Model.GenresList">
+            <option value="">All</option>
+        </select>
+        Game: <input type="text" asp-for="SearchGames" />
+        <input type="submit" value="Filter" />
     </p>
 
 </form>
@@ -26,25 +29,31 @@
             <th>
                 @Html.DisplayNameFor(model => model.GamesTable[0].NameStudio)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GamesTable[0].RelizeDate)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model.GamesTable)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NameGame)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NameStudio)
-                </td>
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameGame)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameStudio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RelizeDate)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

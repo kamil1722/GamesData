@@ -311,3 +311,4 @@ C:\Users\User_Kamil\source\repos\MyGames\GamesData\Visual Studio\obj\Debug\net5.
 C:\Users\User_Kamil\source\repos\MyGames\GamesData\Visual Studio\obj\Debug\net5.0\ref\GamesData.dll
 C:\Users\User_Kamil\source\repos\MyGames\GamesData\Visual Studio\obj\Debug\net5.0\GamesData.pdb
 C:\Users\User_Kamil\source\repos\MyGames\GamesData\Visual Studio\obj\Debug\net5.0\GamesData.genruntimeconfig.cache
+C:\Users\User_Kamil\source\repos\MyGames\GamesData\Visual Studio\obj\Debug\net5.0\GamesData.csprojAssemblyReference.cache
