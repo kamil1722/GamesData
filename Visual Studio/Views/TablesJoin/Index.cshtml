@@ -3,16 +3,15 @@
     ViewData["Title"] = "Index";
 }
 @{
-    IEnumerable<GamesData.Models.JoinTables> displaydata = ViewData["Results"] as IEnumerable<GamesData.Models.JoinTables>;
+    IEnumerable<GamesData.Models.GameGenre> displaydata = ViewData["Results"] as IEnumerable<GamesData.Models.GameGenre>;
 }
 <h1> Games </h1>
 <h3> Games and his genres</h3>
 <hr />
-    <table class="table">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>Name Game</th>
-                <th>Name Studio</th>
                 <th>Name Genre</th>
                 <th></th>
             </tr>
@@ -22,8 +21,7 @@
             {
                 <tr>
                     <td>@item.NameGame</td>
-                    <td>@item.NameStudio</td>
-                    <td>@item.NameGenres</td>
+                    <td>@item.NameGenres</td>                   
                 </tr>
             }
         </tbody>

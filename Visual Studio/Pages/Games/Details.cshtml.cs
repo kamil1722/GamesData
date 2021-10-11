@@ -28,7 +28,7 @@ namespace GamesData.Pages.Games
                 return NotFound();
             }
 
-            GamesTable = await _context.GamesTable.FirstOrDefaultAsync(m => m.ID == id);
+            GamesTable = await _context.gamesTable.FirstOrDefaultAsync(m => m.ID == id);
 
             if (GamesTable == null)
             {

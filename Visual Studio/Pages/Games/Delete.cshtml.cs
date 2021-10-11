@@ -29,7 +29,7 @@ namespace GamesData.Pages.Games
                 return NotFound();
             }
 
-            GamesTable = await _context.GamesTable.FirstOrDefaultAsync(m => m.ID == id);
+            GamesTable = await _context.gamesTable.FirstOrDefaultAsync(m => m.ID == id);
 
             if (GamesTable == null)
             {
@@ -45,11 +45,11 @@ namespace GamesData.Pages.Games
                 return NotFound();
             }
 
-            GamesTable = await _context.GamesTable.FindAsync(id);
+            GamesTable = await _context.gamesTable.FindAsync(id);
 
             if (GamesTable != null)
             {
-                _context.GamesTable.Remove(GamesTable);
+                _context.gamesTable.Remove(GamesTable);
                 await _context.SaveChangesAsync();
             }
 

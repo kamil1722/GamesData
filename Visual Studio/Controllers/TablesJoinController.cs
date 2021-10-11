@@ -11,13 +11,15 @@ namespace GamesData.Controllers
     {
         public IActionResult Index()
         {
-            ViewData["Results"] = TablesColumnsDisplay();
+            ViewData["Results"] = ListJoinController.TablesColumnsDisplay();
             return View();
         }
-
-        public static List<JoinTables> TablesColumnsDisplay()
+    }
+    public class ListJoinController
+    {
+        public static IList<GameGenre> TablesColumnsDisplay()
         {
-            List<JoinTables> jt = new List<JoinTables>();
+            List<GameGenre> jt = new List<GameGenre>();
             string connection = "Data Source =LAPTOP-SK4D7Q04\\SQLEXPRESS; user = User1L; password=1722; Initial Catalog=Test7; Trusted_Connection=True;";
             using (SqlConnection sqlconn = new SqlConnection(connection))
             {
@@ -37,9 +39,8 @@ namespace GamesData.Controllers
                         SqlDataReader sdr = sqlcomm.ExecuteReader();
                         while (sdr.Read())
                         {
-                            JoinTables jtobj = new JoinTables();
+                            GameGenre jtobj = new GameGenre();
                             jtobj.NameGame = sdr["NameGame"].ToString();
-                            jtobj.NameStudio = sdr["NameStudio"].ToString();
                             jtobj.NameGenres = sdr["NameGenres"].ToString();
                             jt.Add(jtobj);
                         }
@@ -48,6 +49,5 @@ namespace GamesData.Controllers
                 }
             }
         }
-        
     }
 }

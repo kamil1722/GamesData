@@ -29,7 +29,7 @@ namespace GamesData.Pages.Genres
                 return NotFound();
             }
 
-            GenresTable = await _context.GenresTable.FirstOrDefaultAsync(m => m.ID == id);
+            GenresTable = await _context.genresTable.FirstOrDefaultAsync(m => m.ID == id);
 
             if (GenresTable == null)
             {
@@ -45,11 +45,11 @@ namespace GamesData.Pages.Genres
                 return NotFound();
             }
 
-            GenresTable = await _context.GenresTable.FindAsync(id);
+            GenresTable = await _context.genresTable.FindAsync(id);
 
             if (GenresTable != null)
             {
-                _context.GenresTable.Remove(GenresTable);
+                _context.genresTable.Remove(GenresTable);
                 await _context.SaveChangesAsync();
             }
 

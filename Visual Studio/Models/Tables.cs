@@ -34,18 +34,12 @@ namespace GamesData.Models
         public string NameGenres { get; set; }
 
     }
-    //таблица  GenresTable для контроллера
-    public class JoinTables
-    {
+    public class GameGenre
+    {    
         public int ID { get; set; }
-
-        [Display(Name = "Name Game ")]
+        public int IdGenre { get; set; }
+        public int IdGame { get; set; }
         public string NameGame { get; set; }
-
-        [Display(Name = "Name Studio ")]
-        public string NameStudio { get; set; }
-
-        [Display(Name = "Name Genre ")]
         public string NameGenres { get; set; }
     }
 }

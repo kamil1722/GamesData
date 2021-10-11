@@ -35,7 +35,7 @@ namespace GamesData.Pages.Games
                 return Page();
             }
 
-            _context.GamesTable.Add(GamesTable);
+            _context.gamesTable.Add(GamesTable);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

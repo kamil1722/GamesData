@@ -35,7 +35,7 @@ namespace GamesData.Pages.Genres
                 return Page();
             }
 
-            _context.GenresTable.Add(GenresTable);
+            _context.genresTable.Add(GenresTable);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

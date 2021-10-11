@@ -23,7 +23,7 @@ namespace GamesData.Pages.Genres
 
         public async Task OnGetAsync()
         {
-            GenresTable = await _context.GenresTable.ToListAsync();
+            GenresTable = await _context.genresTable.ToListAsync();
         }
     }
 }

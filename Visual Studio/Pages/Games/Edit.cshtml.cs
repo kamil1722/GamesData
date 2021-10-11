@@ -30,7 +30,7 @@ namespace GamesData.Pages.Games
                 return NotFound();
             }
 
-            GamesTable = await _context.GamesTable.FirstOrDefaultAsync(m => m.ID == id);
+            GamesTable = await _context.gamesTable.FirstOrDefaultAsync(m => m.ID == id);
 
             if (GamesTable == null)
             {
@@ -71,7 +71,7 @@ namespace GamesData.Pages.Games
 
         private bool GamesTableExists(int id)
         {
-            return _context.GamesTable.Any(e => e.ID == id);
+            return _context.gamesTable.Any(e => e.ID == id);
         }
     }
 }

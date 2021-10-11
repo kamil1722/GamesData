@@ -28,7 +28,7 @@ namespace GamesData.Pages.Genres
                 return NotFound();
             }
 
-            GenresTable = await _context.GenresTable.FirstOrDefaultAsync(m => m.ID == id);
+            GenresTable = await _context.genresTable.FirstOrDefaultAsync(m => m.ID == id);
 
             if (GenresTable == null)
             {
