@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 
@@ -23,8 +25,10 @@ namespace GamesData.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]
         public DateTime RelizeDate { get; set; }
-
+       //public GenresTable GenresTable { get; set; }
+       // public ICollection<GenresTable> GamesGenre { get; set; }
     }
+
     //таблица GenresTable
     public class GenresTable
     {
@@ -32,14 +36,21 @@ namespace GamesData.Models
 
         [Display(Name = "Name Genre ")]
         public string NameGenres { get; set; }
-
+        //public ICollection<GameGenre> GamesGenre { get; set; }
     }
+
+    [Keyless]
     public class GameGenre
-    {    
-        public int ID { get; set; }
-        public int IdGenre { get; set; }
-        public int IdGame { get; set; }
+    {
+        public int GenresTableID { get; set; }
+
+        public GenresTable GenresTable { get; set; }
+        public int GamesTableID { get; set; }
+
+        public GamesTable GamesTable { get; set; }
+
         public string NameGame { get; set; }
         public string NameGenres { get; set; }
+
     }
 }

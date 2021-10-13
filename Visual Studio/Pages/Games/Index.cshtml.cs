@@ -21,7 +21,6 @@ namespace GamesData.Pages.Games
 
         //Добавление таблиц для поиска
         public IList<GamesTable> GamesTable { get; set; }
-
         //Добавление строки поиска
         [BindProperty(SupportsGet = true)]
         public string SearchGames { get; set; }
@@ -34,19 +33,19 @@ namespace GamesData.Pages.Games
         //Поиск и передача отфильтрованных значений в GamesTable и GenresList
         public async Task OnGetAsync()
         {
-            
             var searchGame = from m in _context.gamesTable
-                            select m;
+                             select m;
+            
             if (!string.IsNullOrEmpty(SearchGames))
             {
-                 searchGame = searchGame.Where(s => s.NameGame.Contains(SearchGames));
+                searchGame = searchGame.Where(s => s.NameGame.Contains(SearchGames));
             }
-            // потуги с поиском по жанру
-            IQueryable<string> searchGenres = from m in _context.genresTable
-                                                              select m.NameGenres;
+            // поиск по жанру
+            IQueryable<string> searchGenres = from m in _context.gameGenre
+                                                              select m.GenresTable.NameGenres;
             if (!string.IsNullOrEmpty(SelectGenre))
             {
-                searchGame = searchGame.Where(x => x.NameGame == SelectGenre);
+                searchGame = _context.gameGenre.Where(gg => gg.GenresTable.NameGenres == SelectGenre).Select(gg => gg.GamesTable);       
             }
             GamesTable = await searchGame.ToListAsync();
             GenresList = new SelectList(await searchGenres.Distinct().ToListAsync());        

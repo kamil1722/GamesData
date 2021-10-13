@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Data.SqlClient;
 using GamesData.Models;
 
-
+//Контроллер не особо нужен пока, но всё же оставил для шаблона
 namespace GamesData.Controllers
 {
     //Контроллер для соединения таблиц 
@@ -26,9 +26,9 @@ namespace GamesData.Controllers
                 using (SqlCommand sqlcomm = new SqlCommand("SELECT GamesTable.NameGame, GamesTable.NameStudio, GenresTable.NameGenres" +
                     " FROM GamesTable" +
                     " left JOIN GameGenre" +
-                    " ON GameGenre.IdGame = GamesTable.ID" +
+                    " ON GameGenre.GamesTableID = GamesTable.ID" +
                     " left JOIN GenresTable" +
-                    " ON GameGenre.IdGenre = GenresTable.ID"))
+                    " ON GameGenre.GenresTableID = GenresTable.ID"))
                 {
                     using (SqlDataAdapter sda = new SqlDataAdapter())
                     {
