@@ -18,37 +18,47 @@ namespace GamesData.Pages.Games
         {
             _context = context;
         }
-
-        //Добавление таблиц для поиска
+    
         public IList<GamesTable> GamesTable { get; set; }
-        //Добавление строки поиска
+        
         [BindProperty(SupportsGet = true)]
         public string SearchGames { get; set; }
-
-        //Добавление строки выбора жанра из списка жанров
+   
         public SelectList GenresList { get; set; }
         [BindProperty(SupportsGet = true)]
         public string SelectGenre { get; set; }
-
-        //Поиск и передача отфильтрованных значений в GamesTable и GenresList
+   
         public async Task OnGetAsync()
         {
             var searchGame = from m in _context.gamesTable
                              select m;
-            
-            if (!string.IsNullOrEmpty(SearchGames))
+            IQueryable<string> searchGenres = from m in _context.gameGenre
+                                              select m.GenresTable.NameGenres;
+            // поиск по названию игры 
+            if (!string.IsNullOrEmpty(SearchGames) && string.IsNullOrEmpty(SelectGenre))
             {
                 searchGame = searchGame.Where(s => s.NameGame.Contains(SearchGames));
             }
+         
             // поиск по жанру
-            IQueryable<string> searchGenres = from m in _context.gameGenre
-                                                              select m.GenresTable.NameGenres;
-            if (!string.IsNullOrEmpty(SelectGenre))
+            if (!string.IsNullOrEmpty(SelectGenre) && string.IsNullOrEmpty(SearchGames))
             {
-                searchGame = _context.gameGenre.Where(gg => gg.GenresTable.NameGenres == SelectGenre).Select(gg => gg.GamesTable);       
+                searchGame = _context.gameGenre
+                    .Where(gg => gg.GenresTable.NameGenres == SelectGenre)
+                    .Select(gg => gg.GamesTable);       
             }
+
+            if (!string.IsNullOrEmpty(SelectGenre) && !string.IsNullOrEmpty(SearchGames))
+            {
+                searchGame = _context.gameGenre
+                    .Where(gg => gg.GenresTable.NameGenres == SelectGenre)
+                    .Select(gg => gg.GamesTable)
+                    .Where(s => s.NameGame.Contains(SearchGames));
+            }
+   
+            GenresList = new SelectList(await searchGenres.Distinct().ToListAsync());
             GamesTable = await searchGame.ToListAsync();
-            GenresList = new SelectList(await searchGenres.Distinct().ToListAsync());        
+                
         }
     }
 }

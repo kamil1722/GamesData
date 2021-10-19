@@ -5,33 +5,44 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>Details info</h1>
+
 
 <div>
-    <h4>GamesTable</h4>
+    <h4>Game</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.GamesTable.NameGame)
+            @Html.DisplayNameFor(model => model.game.NameGame)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.GamesTable.NameGame)
+            @Html.DisplayFor(model => model.game.NameGame)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.GamesTable.NameStudio)
+            @Html.DisplayNameFor(model => model.game.NameStudio)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.GamesTable.NameStudio)
+            @Html.DisplayFor(model => model.game.NameStudio)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.GamesTable.RelizeDate)
+            @Html.DisplayNameFor(model => model.game.RelizeDate)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.GamesTable.RelizeDate)
+            @Html.DisplayFor(model => model.game.RelizeDate)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.genres)
+        </dt>
+        @*<dd class="col-sm-10">
+            @Html.DropDownListFor(m => m.genresList, Model.genresList, "Select one")
+        </dd>*@
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.str)
+        </dd>
+
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.GamesTable.ID">Edit</a> |
+    <a asp-page="./Edit" asp-route-id="@Model.game.ID">Edit</a> |
     <a asp-page="./Index">Back to List</a>
 </div>

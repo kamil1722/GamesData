@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using GamesData.Data;
 using GamesData.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.ComponentModel.DataAnnotations;
+
 
 namespace GamesData.Pages.Games
 {
@@ -19,7 +21,12 @@ namespace GamesData.Pages.Games
             _context = context;
         }
 
-        public GamesTable GamesTable { get; set; }
+        public GamesTable game { get; set; }
+        [Display(Name = "Name genres ")]
+        public GenresTable genres { get; set; }
+        public SelectList genresList { get; set; }
+        public string str { get; set; }
+
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -27,10 +34,28 @@ namespace GamesData.Pages.Games
             {
                 return NotFound();
             }
+    
+            game = await _context.gamesTable.FirstOrDefaultAsync(m => m.ID == id);
+   
 
-            GamesTable = await _context.gamesTable.FirstOrDefaultAsync(m => m.ID == id);
+            IQueryable<string> searchGenres = from m in _context.gameGenre
+                                              select m.GenresTable.NameGenres;
+            var guery =  await _context.gameGenre.Join(_context.genresTable,
+                t1 => t1.GenresTableID,
+                t2 => t2.ID,
+                (t1, t2) => new
+                {
+                    GenresID = t2.ID,
+                    GamesTableID = t1.GamesTableID,
+                    NameGenre = t2.NameGenres
+                }).Where(m => m.GamesTableID == id).ToListAsync();
+           
+            str = string.Join(", ", guery.Select(m => m.NameGenre));
+            //genresList = new SelectList(guery, "GenresID", "NameGenre");
 
-            if (GamesTable == null)
+
+
+            if (game == null)
             {
                 return NotFound();
             }
