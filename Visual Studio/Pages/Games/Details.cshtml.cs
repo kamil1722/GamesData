@@ -20,26 +20,18 @@ namespace GamesData.Pages.Games
         {
             _context = context;
         }
-
         public GamesTable game { get; set; }
         [Display(Name = "Name genres ")]
         public GenresTable genres { get; set; }
-        public SelectList genresList { get; set; }
+        //public SelectList genresList { get; set; }
         public string str { get; set; }
-
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
                 return NotFound();
-            }
-    
-            game = await _context.gamesTable.FirstOrDefaultAsync(m => m.ID == id);
-   
-
-            IQueryable<string> searchGenres = from m in _context.gameGenre
-                                              select m.GenresTable.NameGenres;
+            }     
             var guery =  await _context.gameGenre.Join(_context.genresTable,
                 t1 => t1.GenresTableID,
                 t2 => t2.ID,
@@ -51,10 +43,8 @@ namespace GamesData.Pages.Games
                 }).Where(m => m.GamesTableID == id).ToListAsync();
            
             str = string.Join(", ", guery.Select(m => m.NameGenre));
+            game = await _context.gamesTable.FirstOrDefaultAsync(m => m.ID == id);
             //genresList = new SelectList(guery, "GenresID", "NameGenre");
-
-
-
             if (game == null)
             {
                 return NotFound();
