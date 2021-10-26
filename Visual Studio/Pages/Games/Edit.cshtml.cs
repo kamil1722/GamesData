@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using GamesData.Data;
 using GamesData.Models;
 
 namespace GamesData.Pages.Games
@@ -22,6 +21,7 @@ namespace GamesData.Pages.Games
 
         [BindProperty]
         public GamesTable GamesTable { get; set; }
+        public SelectList genresList { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -31,6 +31,10 @@ namespace GamesData.Pages.Games
             }
 
             GamesTable = await _context.gamesTable.FirstOrDefaultAsync(m => m.ID == id);
+
+            IQueryable<string> searchGenres = from m in _context.gameGenre
+                                              select m.GenresTable.NameGenres;
+            genresList = new SelectList(await searchGenres.Distinct().ToListAsync());
 
             if (GamesTable == null)
             {

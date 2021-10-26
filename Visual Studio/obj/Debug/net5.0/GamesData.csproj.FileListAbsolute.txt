@@ -302,7 +302,6 @@ C:\Users\User_Kamil\source\repos\MyGames\GamesData\Visual Studio\obj\Debug\net5.
 C:\Users\User_Kamil\source\repos\MyGames\GamesData\Visual Studio\obj\Debug\net5.0\Razor\Pages\Shared\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\User_Kamil\source\repos\MyGames\GamesData\Visual Studio\obj\Debug\net5.0\Razor\Pages\_ViewImports.cshtml.g.cs
 C:\Users\User_Kamil\source\repos\MyGames\GamesData\Visual Studio\obj\Debug\net5.0\Razor\Pages\_ViewStart.cshtml.g.cs
-C:\Users\User_Kamil\source\repos\MyGames\GamesData\Visual Studio\obj\Debug\net5.0\Razor\Views\TablesJoin\Index.cshtml.g.cs
 C:\Users\User_Kamil\source\repos\MyGames\GamesData\Visual Studio\obj\Debug\net5.0\GamesData.RazorTargetAssemblyInfo.cache
 C:\Users\User_Kamil\source\repos\MyGames\GamesData\Visual Studio\obj\Debug\net5.0\GamesData.RazorTargetAssemblyInfo.cs
 C:\Users\User_Kamil\source\repos\MyGames\GamesData\Visual Studio\obj\Debug\net5.0\GamesData.Views.pdb

@@ -11,16 +11,16 @@ namespace GamesData.Models
         public int ID { get; set; }
 
         [Required]
-        [Display(Name = "Name Game")]
+        [Display(Name = "Game")]
         [StringLength(50)]
         public string NameGame { get; set; }
 
         [Required]
-        [Display(Name = "Name Studio ")]
+        [Display(Name = "Studio")]
         [StringLength(50)]
         public string NameStudio { get; set; }
 
-        [Display(Name = "Relize Date ")]
+        [Display(Name = "Relize date")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]
         public DateTime RelizeDate { get; set; }
@@ -33,7 +33,7 @@ namespace GamesData.Models
     {
         public int ID { get; set; }
 
-        [Display(Name = "Name Genre ")]
+        [Display(Name = "Genre")]
         public string NameGenres { get; set; }
     }
 
@@ -49,6 +49,5 @@ namespace GamesData.Models
 
         //public string NameGame { get; set; }
         //public string NameGenres { get; set; }
-
     }
 }
