@@ -4,13 +4,7 @@
 @{
     ViewData["Title"] = "Details";
 }
-
-<h1>Details info</h1>
-
-
 <div>
-    <h4>Game</h4>
-    <hr />
     <dl class="row">
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.game.NameGame)
@@ -34,8 +28,8 @@
             @Html.DisplayNameFor(model => model.genres)
         </dt>
         @*<dd class="col-sm-10">
-            @Html.DropDownListFor(m => m.genresList, Model.genresList, "Select one")
-        </dd>*@
+                @Html.DropDownListFor(m => m.genresList, Model.genresList, "Select one")
+            </dd>*@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.str)
         </dd>

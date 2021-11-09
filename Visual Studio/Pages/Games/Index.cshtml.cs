@@ -32,13 +32,13 @@ namespace GamesData.Pages.Games
         public string DateSort { get; set; }
 
         //Search
-        public async Task OnGetAsync(string sortOrder)
+        public async Task OnGetAsync(string sortOrder, string currentFilter, int? pageNumber)
         {
             var searchGame = from m in _context.gamesTable
                              select m;
             IQueryable<string> searchGenres = from m in _context.gameGenre
                                               select m.GenresTable.NameGenres;
-            searchGame = SortData(sortOrder);
+            searchGame = SortData(sortOrder, currentFilter, pageNumber);
             // поиск по названию игры 
             if (!string.IsNullOrEmpty(SearchGames)
                 && string.IsNullOrEmpty(SelectGenre))
@@ -52,7 +52,7 @@ namespace GamesData.Pages.Games
                 searchGame = _context.gameGenre
                     .Where(gg => gg.GenresTable.NameGenres == SelectGenre)
                     .Select(gg => gg.GamesTable);
-                searchGame = SortData(sortOrder);
+               
             }
             if (!string.IsNullOrEmpty(SelectGenre) 
                 && !string.IsNullOrEmpty(SearchGames))
@@ -67,13 +67,15 @@ namespace GamesData.Pages.Games
         }
 
         //Sort
-        public IQueryable<GamesTable> SortData(string sortOrder)
+        public IQueryable<GamesTable> SortData(string sortOrder, string currentFilter, int? pageNumber)
         {
             var searchGame = from m in _context.gamesTable
                              select m;
+
             GNameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             StudioSort = sortOrder == "sname_asc" ? "sname_desc" : "sname_asc";
             DateSort = sortOrder == "Date" ? "date_desc" : "Date";
+
             switch (sortOrder)
             {
                 case "name_desc":

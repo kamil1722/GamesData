@@ -4,28 +4,26 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<h1>List games</h1>
-
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
 <form>
-    <p>
+
+    <p class="text-left">
         <select asp-for="SelectGenre" asp-items="Model.GenresList">
             <option value="">All</option>
         </select>
         Game: <input type="text" asp-for="SearchGames" />
-        <input type="submit" value="Filter" />
+        <input type="submit" value="OK" />
     </p>
-
+    <p1 class="text-right">
+        <a asp-page="Create">Create New</a>
+    </p1>
 </form>
 <table class="table">
     <thead>
         <tr>
-            <th>               
-                <a asp-action="Index" asp-route-sortOrder="@Model.GNameSort"> 
-               @Html.DisplayNameFor(model => model.GamesTable[0].NameGame)</a>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@Model.GNameSort">
+                    @Html.DisplayNameFor(model => model.GamesTable[0].NameGame)
+                </a>
             </th>
             <th>
                 <a asp-action="Index" asp-route-sortOrder="@Model.StudioSort">
@@ -43,22 +41,24 @@
     <tbody>
         @foreach (var item in Model.GamesTable)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NameGame)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NameStudio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RelizeDate)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameGame)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameStudio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RelizeDate)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
         }
     </tbody>
 </table>
+
+
